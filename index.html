@@ -71,6 +71,117 @@
             <!-- Horní vrstva -->
             <img src="Playful_mapa_ikonky.svg" alt="" class="overlay-svg">
 
+            <!-- Fog overlay: fancy cloudish overlay with multiple cloud layers -->
+            <svg viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid meet" class="overlay-fog" aria-hidden="true" style="pointer-events:none;">
+                <defs>
+                    <!-- Clipping paths for each region to constrain fog to exact shapes -->
+                    <clipPath id="clip-reg1"><use href="#reg1"/></clipPath>
+                    <clipPath id="clip-reg2"><use href="#reg2"/></clipPath>
+                    <clipPath id="clip-reg3"><use href="#reg3"/></clipPath>
+                    <clipPath id="clip-reg4"><use href="#reg4"/></clipPath>
+                    <clipPath id="clip-reg5"><use href="#reg5"/></clipPath>
+                    <clipPath id="clip-reg6"><use href="#reg6"/></clipPath>
+                    <clipPath id="clip-reg7"><use href="#reg7"/></clipPath>
+                    <clipPath id="clip-reg8"><use href="#reg8"/></clipPath>
+                    <clipPath id="clip-reg9"><use href="#reg9"/></clipPath>
+                    <clipPath id="clip-reg10"><use href="#reg10"/></clipPath>
+                    <clipPath id="clip-reg11"><use href="#reg11"/></clipPath>
+                    <clipPath id="clip-reg12"><use href="#reg12"/></clipPath>
+                    <clipPath id="clip-reg13"><use href="#reg13"/></clipPath>
+                    <clipPath id="clip-reg14"><use href="#reg14"/></clipPath>
+                    <clipPath id="clip-reg15"><use href="#reg15"/></clipPath>
+
+                    <!-- Cloud filter 1: Dense wispy clouds -->
+                    <filter id="fog-cloud-1" x="-50%" y="-50%" width="200%" height="200%">
+                        <feTurbulence type="fractalNoise" baseFrequency="0.012" numOctaves="4" seed="1" result="turbulence1"/>
+                        <feColorMatrix in="turbulence1" type="saturate" values="0" result="grayscale1"/>
+                        <feComponentTransfer in="grayscale1" result="contrast1">
+                            <feFuncA type="discrete" tableValues="0 0 0 1 1 1"/>
+                        </feComponentTransfer>
+                        <feGaussianBlur in="contrast1" stdDeviation="12" result="blur1"/>
+                        <feComponentTransfer in="blur1" result="opacity1">
+                            <feFuncA type="table" tableValues="0 0.3 0.6 0.8"/>
+                        </feComponentTransfer>
+                    </filter>
+
+                    <!-- Cloud filter 2: Soft billowy clouds -->
+                    <filter id="fog-cloud-2" x="-50%" y="-50%" width="200%" height="200%">
+                        <feTurbulence type="fractalNoise" baseFrequency="0.008" numOctaves="3" seed="42" result="turbulence2"/>
+                        <feColorMatrix in="turbulence2" type="saturate" values="0" result="grayscale2"/>
+                        <feGaussianBlur in="grayscale2" stdDeviation="18" result="blur2"/>
+                        <feComponentTransfer in="blur2" result="opacity2">
+                            <feFuncA type="table" tableValues="0 0.4 0.7"/>
+                        </feComponentTransfer>
+                    </filter>
+
+                    <!-- Cloud filter 3: Fine mist overlay -->
+                    <filter id="fog-cloud-3" x="-50%" y="-50%" width="200%" height="200%">
+                        <feTurbulence type="fractalNoise" baseFrequency="0.015" numOctaves="5" seed="99" result="turbulence3"/>
+                        <feGaussianBlur in="turbulence3" stdDeviation="8" result="blur3"/>
+                        <feComponentTransfer in="blur3" result="opacity3">
+                            <feFuncA type="table" tableValues="0 0.2 0.5"/>
+                        </feComponentTransfer>
+                    </filter>
+                </defs>
+
+                <!-- Layer 1: Dense wispy clouds -->
+                <g class="fog-layer fog-layer-1">
+                    <use href="#reg1"  class="fog-cloud" data-region="reg1"  fill="#ffffff" opacity="1" filter="url(#fog-cloud-1)" clip-path="url(#clip-reg1)"/>
+                    <use href="#reg2"  class="fog-cloud" data-region="reg2"  fill="#ffffff" opacity="1" filter="url(#fog-cloud-1)" clip-path="url(#clip-reg2)"/>
+                    <use href="#reg3"  class="fog-cloud" data-region="reg3"  fill="#ffffff" opacity="1" filter="url(#fog-cloud-1)" clip-path="url(#clip-reg3)"/>
+                    <use href="#reg4"  class="fog-cloud" data-region="reg4"  fill="#ffffff" opacity="1" filter="url(#fog-cloud-1)" clip-path="url(#clip-reg4)"/>
+                    <use href="#reg5"  class="fog-cloud" data-region="reg5"  fill="#ffffff" opacity="1" filter="url(#fog-cloud-1)" clip-path="url(#clip-reg5)"/>
+                    <use href="#reg6"  class="fog-cloud" data-region="reg6"  fill="#ffffff" opacity="1" filter="url(#fog-cloud-1)" clip-path="url(#clip-reg6)"/>
+                    <use href="#reg7"  class="fog-cloud" data-region="reg7"  fill="#ffffff" opacity="1" filter="url(#fog-cloud-1)" clip-path="url(#clip-reg7)"/>
+                    <use href="#reg8"  class="fog-cloud" data-region="reg8"  fill="#ffffff" opacity="1" filter="url(#fog-cloud-1)" clip-path="url(#clip-reg8)"/>
+                    <use href="#reg9"  class="fog-cloud" data-region="reg9"  fill="#ffffff" opacity="1" filter="url(#fog-cloud-1)" clip-path="url(#clip-reg9)"/>
+                    <use href="#reg10" class="fog-cloud" data-region="reg10" fill="#ffffff" opacity="1" filter="url(#fog-cloud-1)" clip-path="url(#clip-reg10)"/>
+                    <use href="#reg11" class="fog-cloud" data-region="reg11" fill="#ffffff" opacity="1" filter="url(#fog-cloud-1)" clip-path="url(#clip-reg11)"/>
+                    <use href="#reg12" class="fog-cloud" data-region="reg12" fill="#ffffff" opacity="1" filter="url(#fog-cloud-1)" clip-path="url(#clip-reg12)"/>
+                    <use href="#reg13" class="fog-cloud" data-region="reg13" fill="#ffffff" opacity="1" filter="url(#fog-cloud-1)" clip-path="url(#clip-reg13)"/>
+                    <use href="#reg14" class="fog-cloud" data-region="reg14" fill="#ffffff" opacity="1" filter="url(#fog-cloud-1)" clip-path="url(#clip-reg14)"/>
+                    <use href="#reg15" class="fog-cloud" data-region="reg15" fill="#ffffff" opacity="1" filter="url(#fog-cloud-1)" clip-path="url(#clip-reg15)"/>
+                </g>
+
+                <!-- Layer 2: Soft billowy clouds -->
+                <g class="fog-layer fog-layer-2">
+                    <use href="#reg1"  class="fog-cloud" data-region="reg1"  fill="#f8f9fa" opacity="1" filter="url(#fog-cloud-2)" clip-path="url(#clip-reg1)"/>
+                    <use href="#reg2"  class="fog-cloud" data-region="reg2"  fill="#f8f9fa" opacity="1" filter="url(#fog-cloud-2)" clip-path="url(#clip-reg2)"/>
+                    <use href="#reg3"  class="fog-cloud" data-region="reg3"  fill="#f8f9fa" opacity="1" filter="url(#fog-cloud-2)" clip-path="url(#clip-reg3)"/>
+                    <use href="#reg4"  class="fog-cloud" data-region="reg4"  fill="#f8f9fa" opacity="1" filter="url(#fog-cloud-2)" clip-path="url(#clip-reg4)"/>
+                    <use href="#reg5"  class="fog-cloud" data-region="reg5"  fill="#f8f9fa" opacity="1" filter="url(#fog-cloud-2)" clip-path="url(#clip-reg5)"/>
+                    <use href="#reg6"  class="fog-cloud" data-region="reg6"  fill="#f8f9fa" opacity="1" filter="url(#fog-cloud-2)" clip-path="url(#clip-reg6)"/>
+                    <use href="#reg7"  class="fog-cloud" data-region="reg7"  fill="#f8f9fa" opacity="1" filter="url(#fog-cloud-2)" clip-path="url(#clip-reg7)"/>
+                    <use href="#reg8"  class="fog-cloud" data-region="reg8"  fill="#f8f9fa" opacity="1" filter="url(#fog-cloud-2)" clip-path="url(#clip-reg8)"/>
+                    <use href="#reg9"  class="fog-cloud" data-region="reg9"  fill="#f8f9fa" opacity="1" filter="url(#fog-cloud-2)" clip-path="url(#clip-reg9)"/>
+                    <use href="#reg10" class="fog-cloud" data-region="reg10" fill="#f8f9fa" opacity="1" filter="url(#fog-cloud-2)" clip-path="url(#clip-reg10)"/>
+                    <use href="#reg11" class="fog-cloud" data-region="reg11" fill="#f8f9fa" opacity="1" filter="url(#fog-cloud-2)" clip-path="url(#clip-reg11)"/>
+                    <use href="#reg12" class="fog-cloud" data-region="reg12" fill="#f8f9fa" opacity="1" filter="url(#fog-cloud-2)" clip-path="url(#clip-reg12)"/>
+                    <use href="#reg13" class="fog-cloud" data-region="reg13" fill="#f8f9fa" opacity="1" filter="url(#fog-cloud-2)" clip-path="url(#clip-reg13)"/>
+                    <use href="#reg14" class="fog-cloud" data-region="reg14" fill="#f8f9fa" opacity="1" filter="url(#fog-cloud-2)" clip-path="url(#clip-reg14)"/>
+                    <use href="#reg15" class="fog-cloud" data-region="reg15" fill="#f8f9fa" opacity="1" filter="url(#fog-cloud-2)" clip-path="url(#clip-reg15)"/>
+                </g>
+
+                <!-- Layer 3: Fine mist overlay -->
+                <g class="fog-layer fog-layer-3">
+                    <use href="#reg1"  class="fog-cloud" data-region="reg1"  fill="#fafbfc" opacity="1" filter="url(#fog-cloud-3)" clip-path="url(#clip-reg1)"/>
+                    <use href="#reg2"  class="fog-cloud" data-region="reg2"  fill="#fafbfc" opacity="1" filter="url(#fog-cloud-3)" clip-path="url(#clip-reg2)"/>
+                    <use href="#reg3"  class="fog-cloud" data-region="reg3"  fill="#fafbfc" opacity="1" filter="url(#fog-cloud-3)" clip-path="url(#clip-reg3)"/>
+                    <use href="#reg4"  class="fog-cloud" data-region="reg4"  fill="#fafbfc" opacity="1" filter="url(#fog-cloud-3)" clip-path="url(#clip-reg4)"/>
+                    <use href="#reg5"  class="fog-cloud" data-region="reg5"  fill="#fafbfc" opacity="1" filter="url(#fog-cloud-3)" clip-path="url(#clip-reg5)"/>
+                    <use href="#reg6"  class="fog-cloud" data-region="reg6"  fill="#fafbfc" opacity="1" filter="url(#fog-cloud-3)" clip-path="url(#clip-reg6)"/>
+                    <use href="#reg7"  class="fog-cloud" data-region="reg7"  fill="#fafbfc" opacity="1" filter="url(#fog-cloud-3)" clip-path="url(#clip-reg7)"/>
+                    <use href="#reg8"  class="fog-cloud" data-region="reg8"  fill="#fafbfc" opacity="1" filter="url(#fog-cloud-3)" clip-path="url(#clip-reg8)"/>
+                    <use href="#reg9"  class="fog-cloud" data-region="reg9"  fill="#fafbfc" opacity="1" filter="url(#fog-cloud-3)" clip-path="url(#clip-reg9)"/>
+                    <use href="#reg10" class="fog-cloud" data-region="reg10" fill="#fafbfc" opacity="1" filter="url(#fog-cloud-3)" clip-path="url(#clip-reg10)"/>
+                    <use href="#reg11" class="fog-cloud" data-region="reg11" fill="#fafbfc" opacity="1" filter="url(#fog-cloud-3)" clip-path="url(#clip-reg11)"/>
+                    <use href="#reg12" class="fog-cloud" data-region="reg12" fill="#fafbfc" opacity="1" filter="url(#fog-cloud-3)" clip-path="url(#clip-reg12)"/>
+                    <use href="#reg13" class="fog-cloud" data-region="reg13" fill="#fafbfc" opacity="1" filter="url(#fog-cloud-3)" clip-path="url(#clip-reg13)"/>
+                    <use href="#reg14" class="fog-cloud" data-region="reg14" fill="#fafbfc" opacity="1" filter="url(#fog-cloud-3)" clip-path="url(#clip-reg14)"/>
+                    <use href="#reg15" class="fog-cloud" data-region="reg15" fill="#fafbfc" opacity="1" filter="url(#fog-cloud-3)" clip-path="url(#clip-reg15)"/>
+                </g>
+            </svg>
+
             <!-- Ještě víc horní vrstva -->
             <svg viewBox="0 0 1920 1080" preserveAspectRatio="xMidYMid meet" class="overlay-svg-text">
 

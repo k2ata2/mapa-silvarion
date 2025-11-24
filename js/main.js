@@ -5,6 +5,7 @@
 
 import { initializeMap } from './map.js';
 import { initializeControls } from './ui.js';
+import { initializeFog } from './fog.js';
 import { APP_CONFIG } from './config.js';
 
 /**
@@ -32,6 +33,7 @@ function loadAppConfig() {
  */
 document.addEventListener('DOMContentLoaded', () => {
     loadAppConfig();
+    initializeFog();
     initializeMap();
     initializeControls();
 });

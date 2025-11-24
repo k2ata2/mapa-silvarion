@@ -5,6 +5,7 @@
 
 import { saveRegionState, loadRegionState } from './storage.js';
 import { REGIONS } from './config.js';
+import { updateFogVisibility } from './fog.js';
 
 /**
  * Get the center point of an SVG element
@@ -96,6 +97,9 @@ function toggleRegion(region) {
         }
     }
 
+    // Update fog visibility
+    updateFogVisibility(regionId, isSettled);
+
     // Save state
     saveRegionState(regionId, isSettled);
 }
@@ -118,7 +122,9 @@ function initializeRegion(region, svg, textSvg) {
 
         // Load saved state
         const savedState = loadRegionState(regionId);
-        if (savedState === true) {
+        const isSettled = savedState === true;
+
+        if (isSettled) {
             region.classList.add('settled');
             label.classList.add('active');
 
@@ -127,6 +133,9 @@ function initializeRegion(region, svg, textSvg) {
                 region.style.fill = config.color;
             }
         }
+
+        // Set initial fog visibility based on saved state
+        updateFogVisibility(regionId, isSettled);
     }
 
     // Add click handler

@@ -55,13 +55,107 @@ svg {
     height: 100%;
 }
 
-.overlay-svg, .overlay-svg-text {
+.overlay-svg, .overlay-svg-text, .overlay-fog {
     position: absolute;
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
     pointer-events: none;
+}
+
+/* ===========================
+   FOG OF WAR - FANCY CLOUDS
+   =========================== */
+.overlay-fog {
+    mix-blend-mode: normal;
+}
+
+/* Individual fog layers with staggered animations */
+.fog-layer {
+    mix-blend-mode: screen;
+}
+
+.fog-layer-1 {
+    animation: fog-drift-1 45s ease-in-out infinite;
+}
+
+.fog-layer-2 {
+    animation: fog-drift-2 60s ease-in-out infinite;
+}
+
+.fog-layer-3 {
+    animation: fog-drift-3 50s ease-in-out infinite;
+}
+
+/* Cloud elements with smooth transitions */
+.fog-cloud {
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    transform-origin: center;
+}
+
+.fog-cloud.hidden {
+    opacity: 0 !important;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* Subtle drift animations for mystical effect */
+@keyframes fog-drift-1 {
+    0%, 100% {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+    25% {
+        transform: translate(3px, -2px);
+        opacity: 0.95;
+    }
+    50% {
+        transform: translate(-2px, 3px);
+        opacity: 0.98;
+    }
+    75% {
+        transform: translate(2px, 2px);
+        opacity: 0.96;
+    }
+}
+
+@keyframes fog-drift-2 {
+    0%, 100% {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+    33% {
+        transform: translate(-3px, 2px);
+        opacity: 0.97;
+    }
+    66% {
+        transform: translate(2px, -3px);
+        opacity: 0.94;
+    }
+}
+
+@keyframes fog-drift-3 {
+    0%, 100% {
+        transform: translate(0, 0);
+        opacity: 1;
+    }
+    20% {
+        transform: translate(2px, 3px);
+        opacity: 0.96;
+    }
+    40% {
+        transform: translate(-2px, -2px);
+        opacity: 0.98;
+    }
+    60% {
+        transform: translate(3px, -1px);
+        opacity: 0.95;
+    }
+    80% {
+        transform: translate(-1px, 2px);
+        opacity: 0.97;
+    }
 }
 
 /* ===========================

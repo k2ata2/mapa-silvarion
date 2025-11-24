@@ -4,6 +4,7 @@
  */
 
 import { clearAllRegionStates } from './storage.js';
+import { showFogFor } from './fog.js';
 
 /**
  * Initialize UI controls
@@ -43,16 +44,20 @@ function handleReset() {
  */
 function resetMap() {
     const regions = document.querySelectorAll('.region');
-    
+
     regions.forEach(region => {
         region.classList.remove('settled');
-        
+        region.style.fill = '';
+
         const label = document.getElementById(`label-g-${region.id}`);
         if (label) {
             label.classList.remove('active');
         }
+
+        // Show fog for all regions
+        showFogFor(region.id);
     });
-    
+
     clearAllRegionStates();
 }
 
