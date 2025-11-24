@@ -20,8 +20,8 @@ export const REGIONS = {
         name: 'Listoví',
         color: '#849570',
         description: 'Šedá/Bílá',
-        labelX: 260,
-        labelY: null,
+        labelX: 270,
+        labelY: 290,
         labelMaxWidth: 120
     },
     reg2: {
@@ -36,48 +36,48 @@ export const REGIONS = {
         name: 'Kamenné věže',
         color: '#a1acae',
         description: 'Tmavá šedá',
-        labelX: null,
-        labelY: null,
+        labelX: 260,
+        labelY: 750,
         labelMaxWidth: 120
     },
     reg4: {
         name: 'Jeskyně ozvěn',
-        color: '#e0b5a7',
+        color: '#c5a194ff',
         description: 'Žlutá',
         labelX: null,
-        labelY: null,
+        labelY: 920,
         labelMaxWidth: 120
     },
     reg5: {
         name: 'Čirná zátoka',
-        color: '#fff3c9',
+        color: '#70d1c4ff',
         description: 'Světle zelená',
-        labelX: null,
-        labelY: null,
+        labelX: 725,
+        labelY: 720,
         labelMaxWidth: 120
     },
     reg6: {
         name: 'Křišťálový Dvůr',
-        color: '#f9dadf',
+        color: '#73ce7fff',
         description: 'Fialová',
         labelX: 1030,
-        labelY: null,
+        labelY: 700,
         labelMaxWidth: 120
     },
     reg7: {
         name: 'Šeptající údolí',
-        color: '#e1b5a8',
+        color: '#bfe1a8ff',
         description: 'Hnědá',
         labelX: null,
-        labelY: 740,
+        labelY: 770,
         labelMaxWidth: 120
     },
     reg8: {
-        name: 'Skalopád',
-        color: '#bf9976',
+        name: 'Skálopád',
+        color: '#dbbd5aff',
         description: 'Tmavě hnědá',
-        labelX: null,
-        labelY: 620,
+        labelX: 1550,
+        labelY: 660,
         labelMaxWidth: 120
     },
     reg9: {
@@ -98,18 +98,18 @@ export const REGIONS = {
     },
     reg11: {
         name: 'Sněhostep',
-        color: '#8bbcd3ff',
+        color: '#c4d9e2ff',
         description: 'Světle modrá',
         labelX: null,
-        labelY: null,
+        labelY: 190,
         labelMaxWidth: 120
     },
     reg12: {
         name: 'Svitobrod',
-        color: '#e2959f',
+        color: '#e2b5bbff',
         description: 'Olivová',
-        labelX: 900,
-        labelY: null,
+        labelX: 880,
+        labelY: 475,
         labelMaxWidth: 120
     },
     reg13: {
@@ -117,23 +117,23 @@ export const REGIONS = {
         color: '#f3d281',
         description: 'Tmavě modrá',
         labelX: null,
-        labelY: null,
+        labelY: 650,
         labelMaxWidth: 120
     },
     reg14: {
         name: 'Jiskerné štíty',
-        color: '#c4c0d9',
+        color: '#9c8f7cff',
         description: 'Tyrkysová',
-        labelX: null,
-        labelY: null,
+        labelX: 550,
+        labelY: 350,
         labelMaxWidth: 120
     },
     reg15: {
         name: 'Nivaglen',
-        color: '#ee9381',
+        color: '#8cc062ff',
         description: 'Zelená',
-        labelX: null,
-        labelY: null,
+        labelX: 1215,
+        labelY: 450,
         labelMaxWidth: 120
     }
 };
