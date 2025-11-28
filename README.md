@@ -22,8 +22,6 @@ Mapa/
 - **Interaktivní regiony**: Kliknutím na region ho označíte jako osídlený
 - **Automatické ukládání**: Stav mapy se ukládá do localStorage
 - **Vizuální feedback**: Osídlené regiony mění barvu a zvýrazňují se
-- **Reset funkce**: Možnost resetovat celou mapu
-- **Responzivní design**: Mapa se přizpůsobuje velikosti obrazovky
 
 ## 🚀 Spuštění
 
@@ -52,7 +50,6 @@ Data se ukládají do `localStorage` prohlížeče s prefixem `map_silvarion_v5_
 
 - Každý region má vlastní klíč: `map_silvarion_v5_reg{ID}`
 - Data přetrvávají i po zavření prohlížeče
-- Tlačítko "Resetovat" vymaže všechna uložená data
 
 ## 🎨 Customizace
 
@@ -63,9 +60,8 @@ Názvy regionů jsou definovány v `js/config.js`:
 ```javascript
 export const REGIONS = {
     reg1: {
-        name: 'Listoví',  // Změňte název zde
+        name: 'Listoví',
         color: '#cfd8dc',
-        // ...
     }
 }
 ```
