@@ -99,30 +99,61 @@ function discoverRegion(regionId) {
 }
 
 /**
- * Calculate how many 24-hour periods have passed since start date/time
- * @returns {number} Number of 24-hour periods since start date/time
+ * Check if a date is a weekend (Saturday or Sunday)
+ * @param {Date} date - The date to check
+ * @returns {boolean} True if weekend, false if weekday
  */
-function getDaysSinceStart() {
+function isWeekend(date) {
+    const day = date.getDay();
+    return day === 0 || day === 6; // 0 = Sunday, 6 = Saturday
+}
+
+/**
+ * Calculate how many weekdays have passed since start date/time
+ * First region is discovered AFTER the first 24-hour period
+ * @returns {number} Number of weekdays since start date/time
+ */
+function getWeekdaysSinceStart() {
     const startDate = new Date(APP_CONFIG.startDate);
     const now = new Date();
 
-    // Calculate difference in milliseconds
-    const diffTime = now - startDate;
+    // If we haven't reached the start time yet, return -1 (no regions discovered)
+    if (now < startDate) {
+        return -1;
+    }
 
-    // Calculate number of complete 24-hour periods
-    const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+    let weekdayCount = 0;
+    let currentDate = new Date(startDate);
 
-    return Math.max(0, diffDays); // Don't allow negative days
+    // Count weekdays from start date to now
+    while (currentDate < now) {
+        // Move to next 24-hour period
+        currentDate = new Date(currentDate.getTime() + (24 * 60 * 60 * 1000));
+
+        // Only count if it's a weekday and we've passed this time
+        if (currentDate <= now && !isWeekend(currentDate)) {
+            weekdayCount++;
+        }
+    }
+
+    return weekdayCount;
 }
 
 /**
  * Start the animated discovery sequence
  */
 export function startDiscoveryAnimation() {
-    const daysSinceStart = getDaysSinceStart();
-    const regionsToDiscover = Math.min(daysSinceStart + 1, DISCOVERY_ORDER.length);
+    const weekdaysSinceStart = getWeekdaysSinceStart();
 
-    console.log(`Days since start: ${daysSinceStart}, Discovering ${regionsToDiscover} regions`);
+    // If we haven't reached start time yet, no regions to discover
+    if (weekdaysSinceStart < 0) {
+        console.log('Start time has not been reached yet. No regions to discover.');
+        return;
+    }
+
+    const regionsToDiscover = Math.min(weekdaysSinceStart, DISCOVERY_ORDER.length);
+
+    console.log(`Weekdays since start: ${weekdaysSinceStart}, Discovering ${regionsToDiscover} regions`);
 
     // Discover regions one by one with animation
     for (let i = 0; i < regionsToDiscover; i++) {
