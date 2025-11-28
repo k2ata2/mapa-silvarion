@@ -145,10 +145,10 @@ export const REGIONS = {
 export const DISCOVERY_ORDER = [
     'reg9',   // Stříbrohvozd
     'reg2',   // Šeroles
-    'reg10',  // Zelené údolí
     'reg7',   // Šeptající údolí
-    'reg12',  // Svitobrod
     'reg3',   // Kamenné věže
+    'reg10',  // Zelené údolí
+    'reg12',  // Svitobrod
     'reg1',   // Listoví
     'reg14',  // Jiskerné štíty
     'reg15',  // Nivaglen
