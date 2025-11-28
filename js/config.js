@@ -143,21 +143,21 @@ export const REGIONS = {
  * Defines the order in which regions are discovered over time
  */
 export const DISCOVERY_ORDER = [
-    'reg1',   // Day 1
-    'reg14',  // Day 2
-    'reg2',   // Day 3
-    'reg12',  // Day 4
-    'reg15',  // Day 5
-    'reg10',  // Day 6
-    'reg11',  // Day 7
-    'reg9',   // Day 8
-    'reg3',   // Day 9
-    'reg5',   // Day 10
-    'reg6',   // Day 11
-    'reg13',  // Day 12
-    'reg7',   // Day 13
-    'reg8',   // Day 14
-    'reg4'    // Day 15
+    'reg9',   // Stříbrohvozd
+    'reg2',   // Šeroles
+    'reg10',  // Zelené údolí
+    'reg7',   // Šeptající údolí
+    'reg12',  // Svitobrod
+    'reg3',   // Kamenné věže
+    'reg1',   // Listoví
+    'reg14',  // Jiskerné štíty
+    'reg15',  // Nivaglen
+    'reg11',  // Sněhostep
+    'reg5',   // Čirná zátoka
+    'reg6',   // Křišťálový Dvůr
+    'reg13',  // Nekonečné planiny
+    'reg8',   // Skálopád
+    'reg4',   // Jeskyně ozvěn
 ];
 
 /**
@@ -171,7 +171,7 @@ export const APP_CONFIG = {
     resetConfirmMessage: 'Opravdu chceš vymazat celou novou mapu a začít znovu?',
 
     // Discovery animation settings
-    startDate: '2025-11-26T17:00:00',  // Start date and time for discovery timeline (ISO 8601 format)
+    startDate: '2025-12-01T17:55:00',  // Start date and time for discovery timeline (ISO 8601 format)
     initialDelay: 1000,                // Delay before animation starts (ms)
     discoveryDelay: 600                // Delay between each region discovery (ms)
 };
