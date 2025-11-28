@@ -28,7 +28,7 @@ export const REGIONS = {
         name: 'Šeroles',
         color: '#98aa94',
         description: 'Modrošedá',
-        labelX: null,
+        labelX: 315,
         labelY: 480,
         labelMaxWidth: 120
     },
@@ -44,7 +44,7 @@ export const REGIONS = {
         name: 'Jeskyně ozvěn',
         color: '#c5a194ff',
         description: 'Žlutá',
-        labelX: null,
+        labelX: 475,
         labelY: 920,
         labelMaxWidth: 120
     },
@@ -68,7 +68,7 @@ export const REGIONS = {
         name: 'Šeptající údolí',
         color: '#bfe1a8ff',
         description: 'Hnědá',
-        labelX: null,
+        labelX: 1317,
         labelY: 770,
         labelMaxWidth: 120
     },
@@ -92,15 +92,15 @@ export const REGIONS = {
         name: 'Zelené údolí',
         color: '#afc895',
         description: 'Mátová',
-        labelX: null,
-        labelY: null,
+        labelX: 1050,
+        labelY: 215,
         labelMaxWidth: 120
     },
     reg11: {
         name: 'Sněhostep',
         color: '#c4d9e2ff',
         description: 'Světle modrá',
-        labelX: null,
+        labelX: 781,
         labelY: 190,
         labelMaxWidth: 120
     },
@@ -116,7 +116,7 @@ export const REGIONS = {
         name: 'Nekonečné planiny',
         color: '#f3d281',
         description: 'Tmavě modrá',
-        labelX: null,
+        labelX: 531,
         labelY: 650,
         labelMaxWidth: 120
     },
@@ -124,7 +124,7 @@ export const REGIONS = {
         name: 'Jiskerné štíty',
         color: '#9c8f7cff',
         description: 'Tyrkysová',
-        labelX: 550,
+        labelX: 555,
         labelY: 350,
         labelMaxWidth: 120
     },
