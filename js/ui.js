@@ -3,9 +3,6 @@
  * Handles user interface interactions and controls
  */
 
-import { clearAllRegionStates } from './storage.js';
-import { showFogFor } from './fog.js';
-
 /**
  * Initialize UI controls
  */
@@ -16,10 +13,10 @@ export function initializeControls() {
         saveButton.addEventListener('click', handleSave);
     }
 
-    // Reset button handler
+    // Reset button handler (disabled - no longer needed)
     const resetButton = document.querySelector('[data-action="reset"]');
     if (resetButton) {
-        resetButton.addEventListener('click', handleReset);
+        resetButton.style.display = 'none'; // Hide reset button
     }
 }
 
@@ -28,37 +25,6 @@ export function initializeControls() {
  */
 function handleSave() {
     alert("Tvůj postup v nové zemi byl uložen.");
-}
-
-/**
- * Handle reset action
- */
-function handleReset() {
-    if (confirm("Opravdu chceš vymazat celou novou mapu a začít znovu?")) {
-        resetMap();
-    }
-}
-
-/**
- * Reset the entire map to initial state
- */
-function resetMap() {
-    const regions = document.querySelectorAll('.region');
-
-    regions.forEach(region => {
-        region.classList.remove('settled');
-        region.style.fill = '';
-
-        const label = document.getElementById(`label-g-${region.id}`);
-        if (label) {
-            label.classList.remove('active');
-        }
-
-        // Show fog for all regions
-        showFogFor(region.id);
-    });
-
-    clearAllRegionStates();
 }
 
 /**

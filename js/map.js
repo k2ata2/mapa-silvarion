@@ -3,8 +3,7 @@
  * Handles map initialization, region interactions, and label management
  */
 
-import { saveRegionState, loadRegionState } from './storage.js';
-import { REGIONS } from './config.js';
+import { REGIONS, DISCOVERY_ORDER, APP_CONFIG } from './config.js';
 import { updateFogVisibility } from './fog.js';
 
 /**
@@ -72,74 +71,87 @@ function createLabel(region, center) {
 }
 
 /**
- * Toggle region settled state
- * @param {SVGElement} region - The region element
+ * Discover a region (reveal it)
+ * @param {string} regionId - The region ID
  */
-function toggleRegion(region) {
-    const regionId = region.id;
-    const isSettled = region.classList.toggle('settled');
+function discoverRegion(regionId) {
+    const region = document.getElementById(regionId);
+    if (!region) return;
+
     const config = REGIONS[regionId];
 
+    // Mark as settled
+    region.classList.add('settled');
+
     // Apply color from config
-    if (isSettled && config) {
+    if (config) {
         region.style.fill = config.color;
-    } else {
-        region.style.fill = '';
     }
 
     // Update label
     const labelGroup = document.getElementById(`label-g-${regionId}`);
     if (labelGroup) {
-        if (isSettled) {
-            labelGroup.classList.add('active');
-        } else {
-            labelGroup.classList.remove('active');
-        }
+        labelGroup.classList.add('active');
     }
 
-    // Update fog visibility
-    updateFogVisibility(regionId, isSettled);
+    // Hide fog
+    updateFogVisibility(regionId, true);
+}
 
-    // Save state
-    saveRegionState(regionId, isSettled);
+/**
+ * Calculate how many 24-hour periods have passed since start date/time
+ * @returns {number} Number of 24-hour periods since start date/time
+ */
+function getDaysSinceStart() {
+    const startDate = new Date(APP_CONFIG.startDate);
+    const now = new Date();
+
+    // Calculate difference in milliseconds
+    const diffTime = now - startDate;
+
+    // Calculate number of complete 24-hour periods
+    const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+
+    return Math.max(0, diffDays); // Don't allow negative days
+}
+
+/**
+ * Start the animated discovery sequence
+ */
+export function startDiscoveryAnimation() {
+    const daysSinceStart = getDaysSinceStart();
+    const regionsToDiscover = Math.min(daysSinceStart + 1, DISCOVERY_ORDER.length);
+
+    console.log(`Days since start: ${daysSinceStart}, Discovering ${regionsToDiscover} regions`);
+
+    // Discover regions one by one with animation
+    for (let i = 0; i < regionsToDiscover; i++) {
+        const regionId = DISCOVERY_ORDER[i];
+        const delay = APP_CONFIG.initialDelay + (i * APP_CONFIG.discoveryDelay);
+
+        setTimeout(() => {
+            discoverRegion(regionId);
+        }, delay);
+    }
 }
 
 /**
  * Initialize a single region
  * @param {SVGElement} region - The region element
- * @param {SVGElement} svg - The SVG container
  * @param {SVGAElement} textSvg - Top text layer
  */
-function initializeRegion(region, svg, textSvg) {
+function initializeRegion(region, textSvg) {
     const regionId = region.id;
     const center = getCenter(region);
-    const config = REGIONS[regionId];
 
     // Create and append label
     const label = createLabel(region, center);
     if (label) {
         textSvg.appendChild(label);
-
-        // Load saved state
-        const savedState = loadRegionState(regionId);
-        const isSettled = savedState === true;
-
-        if (isSettled) {
-            region.classList.add('settled');
-            label.classList.add('active');
-
-            // Apply color from config
-            if (config) {
-                region.style.fill = config.color;
-            }
-        }
-
-        // Set initial fog visibility based on saved state
-        updateFogVisibility(regionId, isSettled);
     }
 
-    // Add click handler
-    region.addEventListener('click', () => toggleRegion(region));
+    // All regions start hidden (fog visible)
+    updateFogVisibility(regionId, false);
 }
 
 /**
@@ -147,16 +159,15 @@ function initializeRegion(region, svg, textSvg) {
  */
 export function initializeMap() {
     const regions = document.querySelectorAll('.region');
-    const svg = document.querySelector('svg');
     const textSvg = document.querySelector('.overlay-svg-text');
-    
-    if (!svg) {
-        console.error('SVG element not found');
+
+    if (!textSvg) {
+        console.error('Text SVG overlay not found');
         return;
     }
-    
+
     regions.forEach(region => {
-        initializeRegion(region, svg, textSvg);
+        initializeRegion(region, textSvg);
     });
 }
 

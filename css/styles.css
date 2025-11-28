@@ -177,7 +177,6 @@ svg {
     stroke-linejoin: round;
     stroke-linecap: round;
     transition: fill 0.3s ease, fill-opacity 0.3s ease, stroke-width 0.3s ease; 
-    cursor: pointer;
     fill: var(--sand-color); 
     fill-opacity: 1; 
     vector-effect: non-scaling-stroke;
@@ -195,6 +194,7 @@ svg {
     stroke: #1a0f0a;
     stroke-width: 3px;
     filter: drop-shadow(2px 4px 4px rgba(0,0,0,0.4));
+    transition: fill 0.5s ease;
 }
 
 /* ===========================

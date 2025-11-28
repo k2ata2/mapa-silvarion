@@ -3,7 +3,7 @@
  * Initializes the map application
  */
 
-import { initializeMap } from './map.js';
+import { initializeMap, startDiscoveryAnimation } from './map.js';
 import { initializeControls } from './ui.js';
 import { initializeFog } from './fog.js';
 import { APP_CONFIG } from './config.js';
@@ -36,5 +36,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeFog();
     initializeMap();
     initializeControls();
+
+    // Start the animated discovery sequence
+    startDiscoveryAnimation();
 });
 
