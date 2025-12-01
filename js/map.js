@@ -110,22 +110,23 @@ function isWeekend(date) {
 
 /**
  * Calculate how many weekdays have passed since start date/time
- * First region is discovered AFTER the first 24-hour period
+ * First region is discovered immediately after start time if it's a weekday
  * @returns {number} Number of weekdays since start date/time
  */
 function getWeekdaysSinceStart() {
     const startDate = new Date(APP_CONFIG.startDate);
     const now = new Date();
 
-    // If we haven't reached the start time yet, return -1 (no regions discovered)
+    // If we haven't reached the start time yet, return 0 (no regions discovered)
     if (now < startDate) {
-        return -1;
+        return 0;
     }
 
-    let weekdayCount = 0;
+    // If start date is a weekday and we've passed it, count it as day 1
+    let weekdayCount = isWeekend(startDate) ? 0 : 1;
     let currentDate = new Date(startDate);
 
-    // Count weekdays from start date to now
+    // Count additional weekdays from start date to now
     while (currentDate < now) {
         // Move to next 24-hour period
         currentDate = new Date(currentDate.getTime() + (24 * 60 * 60 * 1000));
@@ -146,7 +147,7 @@ export function startDiscoveryAnimation() {
     const weekdaysSinceStart = getWeekdaysSinceStart();
 
     // If we haven't reached start time yet, no regions to discover
-    if (weekdaysSinceStart < 0) {
+    if (weekdaysSinceStart === 0) {
         console.log('Start time has not been reached yet. No regions to discover.');
         return;
     }
