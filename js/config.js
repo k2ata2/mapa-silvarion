@@ -148,16 +148,16 @@ export const DISCOVERY_ORDER = [
     'reg7',   // Šeptající údolí
     'reg3',   // Kamenné věže
     'reg10',  // Zelené údolí
-    'reg12',  // Svitobrod
+    'reg4',   // Jeskyně ozvěn
+    'reg5',   // Čirná zátoka
     'reg1',   // Listoví
+    'reg13',  // Nekonečné planiny
+    'reg12',  // Svitobrod
     'reg14',  // Jiskerné štíty
     'reg15',  // Nivaglen
     'reg11',  // Sněhostep
-    'reg5',   // Čirná zátoka
     'reg6',   // Křišťálový Dvůr
-    'reg13',  // Nekonečné planiny
     'reg8',   // Skálopád
-    'reg4',   // Jeskyně ozvěn
 ];
 
 /**
