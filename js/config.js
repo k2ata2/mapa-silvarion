@@ -153,11 +153,11 @@ export const DISCOVERY_ORDER = [
     'reg1',   // Listoví
     'reg13',  // Nekonečné planiny
     'reg12',  // Svitobrod
-    'reg14',  // Jiskerné štíty
     'reg15',  // Nivaglen
     'reg11',  // Sněhostep
-    'reg6',   // Křišťálový Dvůr
     'reg8',   // Skálopád
+    'reg14',  // Jiskerné štíty
+    'reg6',   // Křišťálový Dvůr
 ];
 
 /**
