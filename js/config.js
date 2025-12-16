@@ -156,8 +156,8 @@ export const DISCOVERY_ORDER = [
     'reg15',  // Nivaglen
     'reg11',  // Sněhostep
     'reg8',   // Skálopád
-    'reg6',   // Křišťálový Dvůr
     'reg14',  // Jiskerné štíty
+    'reg6',   // Křišťálový Dvůr
 ];
 
 /**
